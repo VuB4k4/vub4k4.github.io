@@ -1,0 +1,192 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1e1e2e; /* Dark Blue-Grey Background */
+    color: #e0e0e0;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #181825;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #89b4fa; /* Accent Color */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: #a6adc8;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+
+.tab-btn:hover {
+    color: white;
+}
+
+.tab-btn.active {
+    color: #89b4fa;
+    border-bottom: 2px solid #89b4fa;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    min-height: 80vh;
+}
+
+/* Tabs Logic */
+.tab-content {
+    display: none; /* Hide all tabs by default */
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block; /* Only show active tab */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* About Me Section */
+.profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #89b4fa;
+    margin-bottom: 15px;
+}
+
+.channel-showcase {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.channel-card {
+    background-color: #313244;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+}
+
+.channel-icon {
+    font-size: 2rem;
+    color: #f38ba8; /* Red for YouTube */
+    margin-bottom: 10px;
+}
+
+/* Tutorials Section */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.playlist-card {
+    background-color: #313244;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.btn-small {
+    display: inline-block;
+    margin-top: 10px;
+    color: #89b4fa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Contact Section */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    background-color: #313244;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+    background-color: #45475a;
+}
+
+.contact-item i {
+    width: 30px;
+    font-size: 1.2rem;
+    color: #89b4fa;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #6c7086;
+    font-size: 0.9rem;
+}
