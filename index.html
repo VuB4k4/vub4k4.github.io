@@ -1,196 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Blog</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root {
-      --dark-bg: #1e293b;
-      --dark-panel: #1f2937;
-      --text-light: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #60a5fa;
-      --accent-dark: #2563eb;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Fredoka', sans-serif;
-      background: linear-gradient(to bottom right, var(--dark-bg), #111827);
-      color: var(--text-light);
-    }
-
-    header {
-      background: linear-gradient(135deg, #334155, var(--accent-dark));
-      padding: 3rem 1rem;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      animation: floatIn 0.9s ease-out;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
-      opacity: 0.9;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    main {
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--dark-panel);
-      border-radius: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      animation: fadeIn 1s ease-in;
-    }
-
-    .hero img {
-      width: 160px;
-      border-radius: 50%;
-      margin-top: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-top: 1.2rem;
-      color: var(--text-light);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .card {
-      background-color: var(--dark-panel);
-      padding: 1.5rem;
-      border-radius: 1.2rem;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img,
-    .card iframe {
-      width: 100%;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .card p {
-      color: var(--text-muted);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes floatIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      background-color: #0f172a;
-      padding: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vu Baka Roblox | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Vietnamese Baka</h1>
-    <p>y'all need to touch GRASS, get a JOBBBBBB 😭</p>
-    <nav>
-      <a href="index.html">About Me</a>
-      <a href="/studio">Studio</a>
-      <a href="/contact">Contact</a>
+
+    <nav class="navbar">
+        <div class="logo">Vu Baka Portfolio</div>
+        <ul class="nav-links">
+            <li><button class="tab-btn active" onclick="openTab('about')">About Me</button></li>
+            <li><button class="tab-btn" onclick="openTab('tutorials')">Studio Tutorials</button></li>
+            <li><button class="tab-btn" onclick="openTab('contact')">Contact</button></li>
+        </ul>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h2>Hey there, I'm Vietnamese Baka!</h2>
-      <img src="avatar.png" alt="My Avatar">
-      <p>
-        I'm a cybersecurity student who finds joy in building immersive worlds and scripts in Roblox Studio.
-      </p>
-    </section>
+    <main class="container">
 
-    <section class="cards">
-      <div class="card">
-        <img src="roblox.png" alt="Roblox Game Screenshot">
-        <p>Here's a peek at one of the Roblox games I've worked on.</p>
-      </div>
-      <div class="card">
-        <iframe height="215" src="https://www.youtube.com/embed/Ap9llly8iy8" title="YouTube Tutorial" frameborder="0" allowfullscreen></iframe>
-        <p>
-          I also run a YouTube channel where I help folks level up their dev skills with tutorials.
-          This is one of my YouTube tutorials - check it out if you're into scripting or game dev!
-        </p>
-      </div>
-    </section>
-  </main>
+        <section id="about" class="tab-content active">
+            <div class="profile-header">
+                <img src="https://tr.rbxcdn.com/30DAY-Avatar-Headshot-Placeholder" alt="Roblox Avatar" class="avatar">
+                <h1>Hi, I'm Vu</h1>
+                <p class="subtitle">Roblox Developer & Content Creator</p>
+            </div>
 
-  <footer>
-    © 2025 Vu Baka. Built with ❤️ & Lua.
-  </footer>
+            <div class="channel-showcase">
+                <div class="channel-card">
+                    <i class="fa-brands fa-youtube channel-icon"></i>
+                    <h3>Vũ Baka Roblox</h3>
+                    <p>Roblox Studio Tutorials & Scripting</p>
+                </div>
+                <div class="channel-card">
+                    <i class="fa-brands fa-youtube channel-icon"></i>
+                    <h3>Vũ Rô Lốc</h3>
+                    <p>Roblox Gaming & Entertainment</p>
+                </div>
+            </div>
+
+            <div class="bio-text">
+                <h2>Summary</h2>
+                <p>Welcome to my portfolio! I create high-quality Roblox Studio tutorials to help aspiring developers learn scripting and building. When I'm not coding, I create gaming content for the Roblox community.</p>
+            </div>
+        </section>
+
+        <section id="tutorials" class="tab-content">
+            <h2><i class="fa-solid fa-code"></i> Roblox Studio Tutorials</h2>
+            <p>Check out my latest guides on scripting and game development.</p>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <h3>Popular Playlists</h3>
+            <div class="playlist-grid">
+                <div class="playlist-card">
+                    <h4>Beginner Scripting</h4>
+                    <p>Start here if you are new to Luau.</p>
+                    <a href="#" class="btn-small">Watch Series</a>
+                </div>
+                <div class="playlist-card">
+                    <h4>Map Building</h4>
+                    <p>Learn how to build realistic maps.</p>
+                    <a href="#" class="btn-small">Watch Series</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="tab-content">
+            <h2>Get In Touch</h2>
+            <div class="contact-list">
+                <a href="#" class="contact-item">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>Roblox Profile</span>
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>YouTube (Vu Baka Roblox)</span>
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="fa-brands fa-discord"></i>
+                    <span>Discord Server</span>
+                </a>
+                <a href="mailto:your-email@example.com" class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Email Me</span>
+                </a>
+                <a href="#" class="contact-item">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vu Baka Roblox. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
