@@ -14,6 +14,7 @@
         <ul class="nav-links">
             <li><button class="tab-btn active" onclick="openTab('about')">About Me</button></li>
             <li><button class="tab-btn" onclick="openTab('tutorials')">Studio Tutorials</button></li>
+            <li><button class="tab-btn" onclick="openTab('security')">Malware Analysis</button></li>
             <li><button class="tab-btn" onclick="openTab('contact')">Contact</button></li>
         </ul>
     </nav>
@@ -29,14 +30,18 @@
 
             <div class="channel-showcase">
                 <div class="channel-card">
-                    <i class="fa-brands fa-youtube channel-icon"></i>
-                    <h3>Vũ Baka Roblox</h3>
-                    <p>Roblox Studio Tutorials & Scripting</p>
+                    <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank" style="text-decoration: none; color: inherit;">
+                        <i class="fa-brands fa-youtube channel-icon"></i>
+                        <h3>Vũ Baka Roblox</h3>
+                        <p>Roblox Studio Tutorials & Scripting</p>
+                    </a>
                 </div>
                 <div class="channel-card">
-                    <i class="fa-brands fa-youtube channel-icon"></i>
-                    <h3>Vũ Rô Lốc</h3>
-                    <p>Roblox Gaming & Entertainment</p>
+                    <a href="https://www.youtube.com/@vuroloc" target="_blank" style="text-decoration: none; color: inherit;">
+                        <i class="fa-brands fa-youtube channel-icon"></i>
+                        <h3>Vũ Rô Lốc</h3>
+                        <p>Roblox Gaming & Entertainment</p>
+                    </a>
                 </div>
             </div>
 
@@ -51,7 +56,7 @@
             <p>Check out my latest guides on scripting and game development.</p>
             
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Vq1hCWCZun8&t=29s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Vq1hCWCZun8?start=29" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <h3>Popular Playlists</h3>
@@ -59,36 +64,75 @@
                 <div class="playlist-card">
                     <h4>Beginner Scripting</h4>
                     <p>Start here if you are new to Luau.</p>
-                    <a href="#" class="btn-small">Watch Series</a>
+                    <a href="https://www.youtube.com/playlist?list=PL24j5OZWDiY0sIUkpuLztNtS8D0f-yb-h" target="_blank" class="btn-small">Watch Series</a>
                 </div>
                 <div class="playlist-card">
                     <h4>Map Building</h4>
                     <p>Learn how to build realistic maps.</p>
-                    <a href="#" class="btn-small">Watch Series</a>
+                    <a href="#" class="btn-small">Coming Soon</a>
                 </div>
             </div>
+        </section>
+
+        <section id="security" class="tab-content">
+            <h2><i class="fa-solid fa-shield-halved"></i> Malware Analysis Project</h2>
+            <p>A reverse engineering case study of the "White Snake" Infostealer.</p>
+
+            <div class="project-showcase" style="background-color: #313244; padding: 25px; border-radius: 10px; margin-top: 20px;">
+                <h3 style="color: #f38ba8;">White Snake Stealer (Analysis)</h3>
+                <p><strong>Type:</strong> Infostealer / Malware-as-a-Service (MaaS)</p>
+                
+                <div style="margin: 20px 0;">
+                    <h4><i class="fa-solid fa-magnifying-glass"></i> Technical Overview</h4>
+                    <p>
+                        [cite_start]I conducted a static and dynamic analysis of this .NET-based malware found circulating on underground forums[cite: 3, 4]. 
+                        [cite_start]It is designed to harvest sensitive information such as browser credentials, crypto wallets, and system data[cite: 5, 6].
+                    </p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
+                        [cite_start]<li><strong>Obfuscation:</strong> Uses XOR encryption and dynamic API resolution to evade detection[cite: 21, 29].</li>
+                        [cite_start]<li><strong>C2 Infrastructure:</strong> Connects to Telegram Bot API and uses Tor[cite: 1646, 638].</li>
+                        [cite_start]<li><strong>Persistence:</strong> Creates a Scheduled Task disguised as an "Nvidia" update[cite: 355, 367].</li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #1e1e2e; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9rem;">
+                    <h4 style="color: #89b4fa; margin-bottom: 10px;">Indicators of Compromise (IOCs)</h4>
+                    <p><span style="color: #a6adc8;">SHA256:</span> <span style="color: #fab387;">446278b00e672276ebd77b7a20356f9fdad4aeb0add39d714de87f3c6b17af89</span></p>
+                </div>
+                
+                <hr style="border-color: #45475a; margin: 20px 0;">
+                
+                <h4>Full Analysis Report</h4>
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: #a6adc8;">Scroll to read the full documentation:</p>
+
+                <div style="width: 100%; height: 800px; background-color: white; border-radius: 10px; overflow: hidden;">
+                    <iframe src="https://docs.google.com/document/d/e/2PACX-1vR0-quqNYC2ltPPWEuDRHpViUBHfJ_Qd0nfVpmnxs9EfhVROLRshKNznn4VLXx0_29NvB6uvy5RE06G/pub?embedded=true" 
+                            style="width: 100%; height: 100%; border: none;">
+                    </iframe>
+                </div>
+                </div>
         </section>
 
         <section id="contact" class="tab-content">
             <h2>Get In Touch</h2>
             <div class="contact-list">
-                <a href="#" class="contact-item">
+                <a href="https://www.roblox.com/users/688805779/profile" target="_blank" class="contact-item">
                     <i class="fa-solid fa-gamepad"></i>
                     <span>Roblox Profile</span>
                 </a>
-                <a href="#" class="contact-item">
+                <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank" class="contact-item">
                     <i class="fa-brands fa-youtube"></i>
                     <span>YouTube (Vu Baka Roblox)</span>
                 </a>
-                <a href="#" class="contact-item">
+                <div class="contact-item">
                     <i class="fa-brands fa-discord"></i>
-                    <span>Discord Server</span>
-                </a>
-                <a href="mailto:your-email@example.com" class="contact-item">
+                    <span>Discord: <strong>toukoire1</strong></span>
+                </div>
+                <a href="mailto:toukoire1@gmail.com" class="contact-item">
                     <i class="fa-solid fa-envelope"></i>
                     <span>Email Me</span>
                 </a>
-                <a href="#" class="contact-item">
+                <a href="https://www.facebook.com/toukoire1" target="_blank" class="contact-item">
                     <i class="fa-brands fa-facebook"></i>
                     <span>Facebook</span>
                 </a>
