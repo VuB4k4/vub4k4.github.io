@@ -13,6 +13,7 @@
         <div class="logo">Vu Baka Portfolio</div>
         <ul class="nav-links">
             <li><button class="tab-btn active" onclick="openTab('about')">About Me</button></li>
+            <li><button class="tab-btn" onclick="openTab('games')">My Games</button></li>
             <li><button class="tab-btn" onclick="openTab('tutorials')">Studio Tutorials</button></li>
             <li><button class="tab-btn" onclick="openTab('security')">Malware Analysis</button></li>
             <li><button class="tab-btn" onclick="openTab('contact')">Contact</button></li>
@@ -51,6 +52,33 @@
             </div>
         </section>
 
+        <section id="games" class="tab-content">
+            <h2><i class="fa-solid fa-gamepad"></i> My Experiences</h2>
+            <p>Play my latest creations directly on Roblox.</p>
+            
+            <div class="playlist-grid">
+                
+                <div class="playlist-card">
+                    <img src="https://tr.rbxcdn.com/5302635678fb7d20658e0a3028d70530/768/432/Image/Png" style="width:100%; border-radius: 5px; margin-bottom: 15px;" alt="Game Thumbnail">
+                    
+                    <h4>Christmas Terror [HORROR]</h4> 
+                    <p>Something is lurking in the dark...</p>
+                    
+                    <a href="https://www.roblox.com/share?code=027babb28c80b74a9b7a75bbcb7d84bb&type=ExperienceDetails&stamp=1766376163949" target="_blank" class="btn-small">Play Now</a>
+                </div>
+
+                <div class="playlist-card">
+                    <img src="https://tr.rbxcdn.com/5302635678fb7d20658e0a3028d70530/768/432/Image/Png" style="width:100%; border-radius: 5px; margin-bottom: 15px;" alt="Game Thumbnail">
+                    
+                    <h4>Just chilling here, and touch grass maybe :D</h4>
+                    <p>Admire the nature hehehehee.</p>
+                    
+                    <a href="https://www.roblox.com/share?code=8ffbc07f2191c1418fe722a682b6a8c7&type=ExperienceDetails&stamp=1766376092429" target="_blank" class="btn-small">Play Now</a>
+                </div>
+
+            </div>
+        </section>
+
         <section id="tutorials" class="tab-content">
             <h2><i class="fa-solid fa-code"></i> Roblox Studio Tutorials</h2>
             <p>Check out my latest guides on scripting and game development.</p>
@@ -85,13 +113,13 @@
                 <div style="margin: 20px 0;">
                     <h4><i class="fa-solid fa-magnifying-glass"></i> Technical Overview</h4>
                     <p>
-                        [cite_start]I conducted a static and dynamic analysis of this .NET-based malware found circulating on underground forums[cite: 3, 4]. 
-                        [cite_start]It is designed to harvest sensitive information such as browser credentials, crypto wallets, and system data[cite: 5, 6].
+                        I conducted a static and dynamic analysis of this .NET-based malware found circulating on underground forums. 
+                        It is designed to harvest sensitive information such as browser credentials, crypto wallets, and system data.
                     </p>
                     <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
-                        [cite_start]<li><strong>Obfuscation:</strong> Uses XOR encryption and dynamic API resolution to evade detection[cite: 21, 29].</li>
-                        [cite_start]<li><strong>C2 Infrastructure:</strong> Connects to Telegram Bot API and uses Tor[cite: 1646, 638].</li>
-                        [cite_start]<li><strong>Persistence:</strong> Creates a Scheduled Task disguised as an "Nvidia" update[cite: 355, 367].</li>
+                        <li><strong>Obfuscation:</strong> Uses XOR encryption and dynamic API resolution to evade detection.</li>
+                        <li><strong>C2 Infrastructure:</strong> Connects to Telegram Bot API and uses Tor.</li>
+                        <li><strong>Persistence:</strong> Creates a Scheduled Task disguised as an "Nvidia" update.</li>
                     </ul>
                 </div>
 
@@ -110,7 +138,8 @@
                             style="width: 100%; height: 100%; border: none;">
                     </iframe>
                 </div>
-                </div>
+
+            </div>
         </section>
 
         <section id="contact" class="tab-content">
