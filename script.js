@@ -1,4 +1,4 @@
-function openTab(tabName) {
+function openTab(event, tabName) {
     // 1. Hide all tab contents
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => {
@@ -15,6 +15,5 @@ function openTab(tabName) {
     document.getElementById(tabName).classList.add('active');
 
     // 4. Add 'active' styling to the button that was clicked
-    // We find the button by looking at the event that triggered this
     event.currentTarget.classList.add('active');
 }
