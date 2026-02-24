@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vu Baka Roblox | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">Vu Baka Portfolio</div>
         <ul class="nav-links">
-            <li><button class="tab-btn active" onclick="openTab('about')">About Me</button></li>
-            <li><button class="tab-btn" onclick="openTab('games')">My Games</button></li>
-            <li><button class="tab-btn" onclick="openTab('tutorials')">Studio Tutorials</button></li>
-            <li><button class="tab-btn" onclick="openTab('security')">Malware Analysis</button></li>
-            <li><button class="tab-btn" onclick="openTab('contact')">Contact</button></li>
+            <li><button class="tab-btn active" onclick="openTab(event, 'about')">About Me</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'games')">My Games</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'tutorials')">Studio Tutorials</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button></li>
         </ul>
     </nav>
 
@@ -31,14 +30,14 @@
 
             <div class="channel-showcase">
                 <div class="channel-card">
-                    <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank">
                         <i class="fa-brands fa-youtube channel-icon"></i>
                         <h3>Vũ Baka Roblox</h3>
                         <p>Roblox Studio Tutorials & Scripting</p>
                     </a>
                 </div>
                 <div class="channel-card">
-                    <a href="https://www.youtube.com/@vuroloc" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://www.youtube.com/@vuroloc" target="_blank">
                         <i class="fa-brands fa-youtube channel-icon"></i>
                         <h3>Vũ Rô Lốc</h3>
                         <p>Roblox Gaming & Entertainment</p>
@@ -53,38 +52,36 @@
         </section>
 
         <section id="games" class="tab-content">
-            <h2><i class="fa-solid fa-gamepad"></i> My Experiences</h2>
-            <p>Play my latest creations directly on Roblox.</p>
+            <div class="section-header">
+                <h2><i class="fa-solid fa-gamepad"></i> My Experiences</h2>
+                <p>Play my latest creations directly on Roblox.</p>
+            </div>
             
             <div class="playlist-grid">
-                
                 <div class="playlist-card">
-                    <img src="https://tr.rbxcdn.com/180DAY-4cdf767e6f229703f7222c55a3ed31d4/352/352/Image/Png/noFilter" style="width:100%; border-radius: 5px; margin-bottom: 15px;" alt="Game Thumbnail">
-                    
+                    <img src="https://tr.rbxcdn.com/180DAY-4cdf767e6f229703f7222c55a3ed31d4/352/352/Image/Png/noFilter" alt="Christmas Terror">
                     <h4>Christmas Terror [HORROR]</h4> 
                     <p>Something is lurking in the dark...</p>
-                    
                     <a href="https://www.roblox.com/share?code=027babb28c80b74a9b7a75bbcb7d84bb&type=ExperienceDetails&stamp=1766376163949" target="_blank" class="btn-small">Play Now</a>
                 </div>
 
                 <div class="playlist-card">
-                    <img src="https://tr.rbxcdn.com/180DAY-e744ffa07a5ee6063ad1ea6dd930caa7/352/352/Image/Png/noFilter" style="width:100%; border-radius: 5px; margin-bottom: 15px;" alt="Game Thumbnail">
-                    
+                    <img src="https://tr.rbxcdn.com/180DAY-e744ffa07a5ee6063ad1ea6dd930caa7/352/352/Image/Png/noFilter" alt="Touch Grass">
                     <h4>Just chilling here, and touch grass maybe :D</h4>
                     <p>Admire the nature hehehehee.</p>
-                    
                     <a href="https://www.roblox.com/share?code=8ffbc07f2191c1418fe722a682b6a8c7&type=ExperienceDetails&stamp=1766376092429" target="_blank" class="btn-small">Play Now</a>
                 </div>
-
             </div>
         </section>
 
         <section id="tutorials" class="tab-content">
-            <h2><i class="fa-solid fa-code"></i> Roblox Studio Tutorials</h2>
-            <p>Check out my latest guides on scripting and game development.</p>
+            <div class="section-header">
+                <h2><i class="fa-solid fa-code"></i> Roblox Studio Tutorials</h2>
+                <p>Check out my latest guides on scripting and game development.</p>
+            </div>
             
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Vq1hCWCZun8?start=29" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/Vq1hCWCZun8?start=29" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <h3>Popular Playlists</h3>
@@ -97,53 +94,16 @@
                 <div class="playlist-card">
                     <h4>Map Building</h4>
                     <p>Learn how to build realistic maps.</p>
-                    <a href="#" class="btn-small">Coming Soon</a>
+                    <a href="#" class="btn-small disabled">Coming Soon</a>
                 </div>
-            </div>
-        </section>
-
-        <section id="security" class="tab-content">
-            <h2><i class="fa-solid fa-shield-halved"></i> Malware Analysis Project</h2>
-            <p>A reverse engineering case study of the "White Snake" Infostealer.</p>
-
-            <div class="project-showcase" style="background-color: #313244; padding: 25px; border-radius: 10px; margin-top: 20px;">
-                <h3 style="color: #f38ba8;">White Snake Stealer (Analysis)</h3>
-                <p><strong>Type:</strong> Infostealer / Malware-as-a-Service (MaaS)</p>
-                
-                <div style="margin: 20px 0;">
-                    <h4><i class="fa-solid fa-magnifying-glass"></i> Technical Overview</h4>
-                    <p>
-                        I conducted a static and dynamic analysis of this .NET-based malware found circulating on underground forums. 
-                        It is designed to harvest sensitive information such as browser credentials, crypto wallets, and system data.
-                    </p>
-                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
-                        <li><strong>Obfuscation:</strong> Uses XOR encryption and dynamic API resolution to evade detection.</li>
-                        <li><strong>C2 Infrastructure:</strong> Connects to Telegram Bot API and uses Tor.</li>
-                        <li><strong>Persistence:</strong> Creates a Scheduled Task disguised as an "Nvidia" update.</li>
-                    </ul>
-                </div>
-
-                <div style="background-color: #1e1e2e; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9rem;">
-                    <h4 style="color: #89b4fa; margin-bottom: 10px;">Indicators of Compromise (IOCs)</h4>
-                    <p><span style="color: #a6adc8;">SHA256:</span> <span style="color: #fab387;">446278b00e672276ebd77b7a20356f9fdad4aeb0add39d714de87f3c6b17af89</span></p>
-                </div>
-                
-                <hr style="border-color: #45475a; margin: 20px 0;">
-                
-                <h4>Full Analysis Report</h4>
-                <p style="margin-bottom: 15px; font-size: 0.9rem; color: #a6adc8;">Scroll to read the full documentation:</p>
-
-                <div style="width: 100%; height: 800px; background-color: white; border-radius: 10px; overflow: hidden;">
-                    <iframe src="https://docs.google.com/document/d/e/2PACX-1vR0-quqNYC2ltPPWEuDRHpViUBHfJ_Qd0nfVpmnxs9EfhVROLRshKNznn4VLXx0_29NvB6uvy5RE06G/pub?embedded=true" 
-                            style="width: 100%; height: 100%; border: none;">
-                    </iframe>
-                </div>
-
             </div>
         </section>
 
         <section id="contact" class="tab-content">
-            <h2>Get In Touch</h2>
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Connect with me on my socials or drop a message.</p>
+            </div>
             <div class="contact-list">
                 <a href="https://www.roblox.com/users/688805779/profile" target="_blank" class="contact-item">
                     <i class="fa-solid fa-gamepad"></i>
@@ -151,9 +111,13 @@
                 </a>
                 <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank" class="contact-item">
                     <i class="fa-brands fa-youtube"></i>
-                    <span>YouTube (Vu Baka Roblox)</span>
+                    <span>YouTube (Vu Baka)</span>
                 </a>
-                <div class="contact-item">
+                <a href="https://x.com/VietnameseBaka" target="_blank" class="contact-item">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>X (Twitter)</span>
+                </a>
+                <div class="contact-item static">
                     <i class="fa-brands fa-discord"></i>
                     <span>Discord: <strong>toukoire1</strong></span>
                 </div>
