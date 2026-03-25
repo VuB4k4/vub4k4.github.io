@@ -3,382 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW Web Security Mindmap | Vu Baka</title>
-    <!-- Vẫn giữ lại style từ thư mục cha nếu cần, nhưng CSS mindmap đã được nhúng bên dưới -->
-    <link rel="stylesheet" href="../style.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Load D3.js từ CDN -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-
+    <title>XMind Full Screen</title>
     <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1a1a1a;
-            padding: 15px 30px;
-            border-bottom: 2px solid #e63946;
-        }
-
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #e63946;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a, .nav-links button {
-            color: #fff;
-            text-decoration: none;
-            background: none;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links button:hover, .nav-links .active {
-            background-color: #e63946;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 100%;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Vùng chứa Mindmap */
-        #mindmap {
+        body, html {
+            height: 100%;
             width: 100%;
-            height: 80vh; /* Chiếm 80% chiều cao màn hình */
-            background-color: #1a1a1a;
-            border-radius: 10px;
-            border: 1px solid #333;
-            overflow: hidden;
-            cursor: grab;
+            overflow: hidden; /* Prevents double scrollbars */
+            background-color: #000;
         }
-
-        #mindmap:active {
-            cursor: grabbing;
+        /* The Portfolio Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #333;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
         }
-
-        /* D3 SVG Styles */
-        .node circle {
-            fill: #888;
-            stroke: #e63946;
-            stroke-width: 2px;
-            transition: fill 0.3s;
+        .back-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
         }
-
-        .node text {
-            font-size: 14px;
-            font-family: "Courier New", Courier, monospace;
-            fill: #e0e0e0;
-            text-shadow: 1px 1px 3px #000, -1px -1px 3px #000, 1px -1px 3px #000, -1px 1px 3px #000;
-        }
-
-        .link {
-            fill: none;
-            stroke: #555;
-            stroke-width: 1.5px;
+        /* Full Screen Iframe */
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">Vu Baka Portfolio</div>
-        <ul class="nav-links">
-            <li><a href="../index.html">Back to Home</a></li>
-            <li><button class="active">IAW D3.js Mindmap</button></li>
-        </ul>
-    </nav>
+    <a href="https://vub4k4.github.io/" class="back-btn">← Back to Portfolio</a>
 
-    <main class="container">
-        <div class="section-header">
-            <h2><i class="fa-solid fa-sitemap"></i> Khóa học IAW (Web Security)</h2>
-            <p>Sử dụng chuột để kéo (pan), cuộn chuột để phóng to/thu nhỏ (zoom), và click vào các node màu đỏ để đóng/mở nhánh.</p>
-        </div>
+    <iframe 
+        src="https://app.xmind.com/embed/G8twCy7T?sheet-id=94d8074374fa0870cef34ae258" 
+        allow="fullscreen">
+    </iframe>
 
-        <!-- Khung vẽ D3 -->
-        <div id="mindmap"></div>
-    </main>
-
-    <script>
-        // Dữ liệu 10 bài giảng (Full detail từ tài liệu của bạn)
-        const treeData = {
-            name: "Web Security (IAW)",
-            children: [
-                {
-                    name: "LECTURE 1: Intro",
-                    children: [
-                        { name: "1. Web App: Phần mềm lưu trên server, truy cập qua browser" },
-                        { name: "2. Components: Front-End, Back-End, Database" },
-                        { name: "3. Auth & Authz: Xác minh danh tính & Kiểm soát quyền" },
-                        { name: "4. Web Comm: HTTP / HTTPS (SSL/TLS)" },
-                        { name: "5. Security: CIA Triad, SQLi, XSS, CSRF" },
-                        { name: "6. Client vs Server Vulnerabilities" },
-                        { name: "7. Tools: SAST (Code), DAST (Runtime), IAST" },
-                        { name: "8. OWASP: Top 10, ZAP, WebGoat" }
-                    ]
-                },
-                {
-                    name: "LECTURE 2: Info Disclosure",
-                    children: [
-                        { name: "1. Concept: Lộ dữ liệu nhạy cảm, config hệ thống" },
-                        { name: "2. Vulns: Error Messages, Security Headers, Directory Listing" },
-                        { name: "3. Impact: Đánh cắp danh tính, lộ thông tin server" },
-                        { name: "4. Prevention: Validate input, Tắt dir listing, Generic errors" },
-                        { name: "5. Case Study: Equifax Data Breach (2017)" }
-                    ]
-                },
-                {
-                    name: "LECTURE 3: Authentication Vulns",
-                    children: [
-                        { name: "1. Concept: Yếu điểm trong xác minh người dùng" },
-                        { name: "2. Password Vulns: Weak Passwords, Phishing, Insecure Storage" },
-                        { name: "3. MFA Vulns: SMS Interception, Weak Recovery" },
-                        { name: "4. Prevention: Strong policy, Hash (bcrypt/argon2), Hardware token" }
-                    ]
-                },
-                {
-                    name: "LECTURE 4: Access Control",
-                    children: [
-                        { name: "1. Concept: Không thực thi đúng giới hạn quyền hạn" },
-                        { name: "2. Vulns: IDOR, Privilege Escalation, OAuth 2.0 Flaws" },
-                        { name: "3. Impact: Truy cập trái phép, chiếm hệ thống" },
-                        { name: "4. Prevention: Dùng token thay ID (IDOR), Implement RBAC chặt chẽ" }
-                    ]
-                },
-                {
-                    name: "LECTURE 5: SQL Injection",
-                    children: [
-                        { name: "1. Concept: Thực thi câu lệnh SQL độc hại qua input" },
-                        { name: "2. Techs: UNION, Time-based, Error-based, Blind, Stacked" },
-                        { name: "3. Impact: Data theft, Chỉnh sửa/xóa dữ liệu" },
-                        { name: "4. Prevention: Parameterized Queries, Stored Procedures, ORM" }
-                    ]
-                },
-                {
-                    name: "LECTURE 6: OS Command Injection",
-                    children: [
-                        { name: "1. Concept: Truyền dữ liệu độc vào system shell" },
-                        { name: "2. Vulns: Direct Injection, Insecure Data Handling, Blind" },
-                        { name: "3. Impact: Kiểm soát server, Xóa dữ liệu, Pivot attack" },
-                        { name: "4. Prevention: Safe APIs, Allowlist, Least Privilege" }
-                    ]
-                },
-                {
-                    name: "LECTURE 7: XSS (Cross-Site Scripting)",
-                    children: [
-                        { name: "1. Concept: Chèn script độc vào trang web người dùng xem" },
-                        { name: "2. Types: Reflected (URL), Stored (DB), DOM-based" },
-                        { name: "3. Impact: Session hijacking, Defacement, Phishing" },
-                        { name: "4. Prevention: Output Encoding, CSP, Dùng Framework (React)" }
-                    ]
-                },
-                {
-                    name: "LECTURE 8: SSRF",
-                    children: [
-                        { name: "1. Concept: Lừa server gửi request đến domain tùy ý" },
-                        { name: "2. Vulns: Không validate URL, Bypass IP whitelist nội bộ" },
-                        { name: "3. Impact: Quét mạng nội bộ, Lấy dữ liệu nội bộ, RCE" },
-                        { name: "4. Prevention: Validate URL (allowlist), Outbound firewall" }
-                    ]
-                },
-                {
-                    name: "LECTURE 9: Race Condition",
-                    children: [
-                        { name: "1. Concept: Lỗi do thứ tự/thời điểm xử lý request đồng thời" },
-                        { name: "2. Vulns: Concurrent DB tx, Session Race, Resource Manipulation" },
-                        { name: "3. Impact: Dữ liệu không nhất quán (Rút tiền gấp đôi), Crash" },
-                        { name: "4. Prevention: Synchronization/Locking, Atomic Transactions" }
-                    ]
-                },
-                {
-                    name: "LECTURE 10: Path Traversal",
-                    children: [
-                        { name: "1. Concept: Đọc file ngoài thư mục cho phép (../../)" },
-                        { name: "2. Vulns: Insecure File Uploads, Improper Sanitization" },
-                        { name: "3. Impact: Đọc source code, Lấy config, Xóa file" },
-                        { name: "4. Prevention: Lọc ký tự ../, Safe APIs, Access Controls" }
-                    ]
-                }
-            ]
-        };
-
-        // Kích thước và cấu hình D3
-        const margin = {top: 20, right: 120, bottom: 20, left: 120};
-        const container = document.getElementById("mindmap");
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-
-        const svg = d3.select("#mindmap").append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .style("user-select", "none");
-
-        // Nhóm chứa toàn bộ mindmap (dùng để zoom/pan)
-        const g = svg.append("g")
-            .attr("transform", `translate(${margin.left},${height/2})`); // Đặt root ở giữa trục Y
-
-        // Tính năng Zoom & Pan
-        const zoom = d3.zoom()
-            .scaleExtent([0.1, 3])
-            .on("zoom", (event) => {
-                g.attr("transform", event.transform);
-            });
-        
-        svg.call(zoom);
-        // Khởi tạo vị trí ban đầu cho zoom
-        svg.call(zoom.transform, d3.zoomIdentity.translate(margin.left + 50, height/2).scale(0.8));
-
-        // Cấu trúc cây
-        const treemap = d3.tree().nodeSize([40, 300]); // [khoảng cách dọc, khoảng cách ngang]
-
-        let root = d3.hierarchy(treeData, d => d.children);
-        root.x0 = 0;
-        root.y0 = 0;
-
-        // Đóng toàn bộ các nhánh con (Lecture 1-10 details) khi mới load để tránh rối
-        root.children.forEach(collapse);
-
-        function collapse(d) {
-            if(d.children) {
-                d._children = d.children;
-                d._children.forEach(collapse);
-                d.children = null;
-            }
-        }
-
-        update(root);
-
-        function update(source) {
-            const treeData = treemap(root);
-            const nodes = treeData.descendants();
-            const links = treeData.descendants().slice(1);
-
-            // Gán dữ liệu cho Node
-            const node = g.selectAll('g.node')
-                .data(nodes, d => d.id || (d.id = ++i));
-
-            let i = 0;
-
-            // Xử lý node mới (Enter)
-            const nodeEnter = node.enter().append('g')
-                .attr('class', 'node')
-                .attr("transform", d => `translate(${source.y0},${source.x0})`)
-                .on('click', click);
-
-            nodeEnter.append('circle')
-                .attr('class', 'node')
-                .attr('r', 1e-6)
-                .style("fill", d => d._children ? "#e63946" : "#888")
-                .style("cursor", d => d._children || d.children ? "pointer" : "default");
-
-            nodeEnter.append('text')
-                .attr("dy", ".35em")
-                .attr("x", d => d.children || d._children ? -13 : 13)
-                .attr("text-anchor", d => d.children || d._children ? "end" : "start")
-                .text(d => d.data.name)
-                .style("fill-opacity", 1e-6)
-                .style("cursor", d => d._children || d.children ? "pointer" : "default");
-
-            // Xử lý node cập nhật (Update)
-            const nodeUpdate = nodeEnter.merge(node);
-
-            nodeUpdate.transition()
-                .duration(500)
-                .attr("transform", d => `translate(${d.y},${d.x})`);
-
-            nodeUpdate.select('circle.node')
-                .attr('r', 6)
-                .style("fill", d => d._children ? "#e63946" : "#888");
-
-            nodeUpdate.select('text')
-                .style("fill-opacity", 1);
-
-            // Xử lý node bị ẩn (Exit)
-            const nodeExit = node.exit().transition()
-                .duration(500)
-                .attr("transform", d => `translate(${source.y},${source.x})`)
-                .remove();
-
-            nodeExit.select('circle').attr('r', 1e-6);
-            nodeExit.select('text').style('fill-opacity', 1e-6);
-
-            // Xử lý Links (đường nối)
-            const link = g.selectAll('path.link')
-                .data(links, d => d.id);
-
-            const linkEnter = link.enter().insert('path', "g")
-                .attr("class", "link")
-                .attr('d', d => {
-                    const o = {x: source.x0, y: source.y0};
-                    return diagonal(o, o);
-                });
-
-            const linkUpdate = linkEnter.merge(link);
-
-            linkUpdate.transition()
-                .duration(500)
-                .attr('d', d => diagonal(d, d.parent));
-
-            const linkExit = link.exit().transition()
-                .duration(500)
-                .attr('d', d => {
-                    const o = {x: source.x, y: source.y};
-                    return diagonal(o, o);
-                })
-                .remove();
-
-            // Cập nhật vị trí cũ cho animation lần sau
-            nodes.forEach(d => {
-                d.x0 = d.x;
-                d.y0 = d.y;
-            });
-
-            // Hàm tạo đường cong Bezier
-            function diagonal(s, d) {
-                return `M ${s.y} ${s.x}
-                        C ${(s.y + d.y) / 2} ${s.x},
-                          ${(s.y + d.y) / 2} ${d.x},
-                          ${d.y} ${d.x}`;
-            }
-
-            // Hàm xử lý Click (đóng/mở node)
-            function click(event, d) {
-                if (d.children) {
-                    d._children = d.children;
-                    d.children = null;
-                } else {
-                    d.children = d._children;
-                    d._children = null;
-                }
-                update(d);
-            }
-        }
-    </script>
 </body>
 </html>
