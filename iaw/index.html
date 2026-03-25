@@ -16,12 +16,13 @@
             overflow: hidden; /* Prevents double scrollbars */
             background-color: #000;
         }
-        /* The Portfolio Button */
+
+        /* The Portfolio Button (Top Left) */
         .back-btn {
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 1000;
+            z-index: 1000; /* Stays above everything */
             padding: 10px 20px;
             background-color: #ffffff;
             color: #333;
@@ -36,6 +37,7 @@
             background-color: #f0f0f0;
             transform: translateY(-2px);
         }
+
         /* Full Screen Iframe */
         iframe {
             position: absolute;
@@ -44,12 +46,33 @@
             width: 100%;
             height: 100%;
             border: none;
+            z-index: 1; /* Layer beneath controls */
+        }
+
+        /* The Logo Overlay (Bottom Right) */
+        .logo-blocker {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 999; /* Higher than iframe, lower than back button */
+            width: 120px;   /* Cover the logo area */
+            height: 45px;   /* Cover the logo area */
+            
+            /* --- COLOR ADJUSTMENT --- */
+            /* Change this background-color to match your mind map background. 
+               The current #999 is a generic neutral grey matching your image. */
+            background-color: #999999; 
+            /* ------------------------- */
+            
+            border-top-left-radius: 4px; /* Slight blend */
         }
     </style>
 </head>
 <body>
 
     <a href="https://vub4k4.github.io/" class="back-btn">← Back to Portfolio</a>
+
+    <div class="logo-blocker"></div>
 
     <iframe 
         src="https://app.xmind.com/embed/G8twCy7T?sheet-id=94d8074374fa0870cef34ae258" 
