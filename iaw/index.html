@@ -3,184 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAW Mindmap | Vu Baka Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>IAW Web Security Mindmap | Vu Baka</title>
+    <link rel="stylesheet" href="../style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #11111b 0%, #1e1e2e 100%);
-            color: #cdd6f4;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVIGATION BAR --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background-color: rgba(24, 24, 37, 0.85);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #89b4fa;
-            white-space: nowrap;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-        }
-
-        .back-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: none;
-            border: none;
-            color: #a6adc8;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .back-btn:hover {
-            color: #f5c2e7;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* --- MAIN CONTENT --- */
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 35px;
-            animation: slideUp 0.4s ease forwards;
-        }
-
-        .section-header h1 {
-            font-size: 2rem;
-            color: #89b4fa;
-            margin-bottom: 10px;
-        }
-
-        .section-header p {
-            color: #a6adc8;
-            font-size: 1rem;
-        }
-
-        /* --- MINDMAP EMBED --- */
-        .mindmap-wrapper {
-            background-color: #313244;
-            border-radius: 16px;
-            border: 1px solid #45475a;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transition: box-shadow 0.3s ease;
-            animation: slideUp 0.5s ease 0.1s forwards;
-            opacity: 0;
-        }
-
-        .mindmap-wrapper:hover {
-            box-shadow: 0 15px 50px rgba(137, 180, 250, 0.15);
-            border-color: #89b4fa;
-        }
-
-        .mindmap-wrapper iframe {
-            display: block;
+        /* Bổ sung CSS riêng cho Mindmap Tree để không làm ảnh hưởng style.css cũ */
+        .mindmap-container {
             width: 100%;
-            height: 540px;
+            overflow-x: auto; /* Cho phép cuộn ngang nếu mindmap quá to */
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            background-color: #1a1a1a; /* Màu nền tối hợp với theme hacker/dev */
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #6c7086;
-            font-size: 0.9rem;
-            border-top: 1px solid #313244;
-            margin-top: 60px;
+        .tree ul {
+            padding-top: 20px; position: relative;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            display: flex;
+            justify-content: center;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        .tree li {
+            float: left; text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
         }
 
-        /* --- MOBILE --- */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 15px;
-                gap: 12px;
-            }
+        /* Các đường nối */
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute; top: 0; right: 50%;
+            border-top: 2px solid #ccc;
+            width: 50%; height: 20px;
+        }
+        .tree li::after {
+            right: auto; left: 50%;
+            border-left: 2px solid #ccc;
+        }
 
-            .section-header h1 {
-                font-size: 1.5rem;
-            }
+        /* Xóa đường nối của phần tử đầu/cuối */
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+        .tree li:only-child { padding-top: 0;}
+        .tree li:first-child::before, .tree li:last-child::after {
+            border: 0 none;
+        }
+        .tree li:first-child::after {
+            border-radius: 5px 0 0 0;
+            -webkit-border-radius: 5px 0 0 0;
+            -moz-border-radius: 5px 0 0 0;
+        }
+        .tree li:last-child::before {
+            border-right: 2px solid #ccc;
+            border-radius: 0 5px 0 0;
+            -webkit-border-radius: 0 5px 0 0;
+            -moz-border-radius: 0 5px 0 0;
+        }
 
-            .mindmap-wrapper iframe {
-                height: 400px;
-            }
+        /* Đường nối thẳng xuống cho các node có node con */
+        .tree ul ul::before {
+            content: '';
+            position: absolute; top: 0; left: 50%;
+            border-left: 2px solid #ccc;
+            width: 0; height: 20px;
+        }
 
-            .container {
-                margin: 20px auto;
-            }
+        /* Style cho các khối mindmap */
+        .tree li a {
+            border: 2px solid #ccc;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #fff;
+            font-family: arial, verdana, tahoma;
+            font-size: 14px;
+            display: inline-block;
+            border-radius: 5px;
+            background-color: #333;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            min-width: 120px;
+        }
+
+        /* Hiệu ứng Hover */
+        .tree li a:hover, .tree li a:hover+ul li a {
+            background: #e63946; color: #fff; border: 2px solid #e63946;
+        }
+        .tree li a:hover+ul li::after, 
+        .tree li a:hover+ul li::before, 
+        .tree li a:hover+ul::before, 
+        .tree li a:hover+ul ul::before {
+            border-color:  #e63946;
+        }
+        
+        /* Chỉnh lại layout dọc cho các node lá để tiết kiệm diện tích ngang */
+        .tree ul.vertical {
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+        }
+        .tree ul.vertical li {
+            padding: 10px 0 0 20px;
+            float: none;
+            text-align: left;
+        }
+        .tree ul.vertical li::before, .tree ul.vertical li::after {
+            display: none;
+        }
+        .tree ul.vertical li a {
+            border-color: transparent;
+            background-color: transparent;
+            border-left: 3px solid #e63946;
+            border-radius: 0;
+            padding: 5px 10px;
+            font-size: 12px;
+            min-width: auto;
+            color: #aaa;
+        }
+        .tree ul.vertical li a:hover {
+            color: #fff;
+            background-color: rgba(230, 57, 70, 0.2);
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="https://vub4k4.github.io/" class="logo">Vu Baka Portfolio</a>
-        <a href="https://vub4k4.github.io/" class="back-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            Back to Portfolio
-        </a>
+        <div class="logo">Vu Baka Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="../index.html" class="tab-btn" style="text-decoration: none; color: inherit;">Back to Home</a></li>
+            <li><button class="tab-btn active">IAW Mindmap</button></li>
+        </ul>
     </nav>
 
-    <main class="container">
+    <main class="container" style="max-width: 100%;"> <section class="tab-content active">
+            <div class="section-header" style="text-align: center;">
+                <h2><i class="fa-solid fa-shield-halved"></i> Web Security (IAW) Mindmap</h2>
+                <p>Tổng hợp 10 Lectures môn IAW.</p>
+            </div>
 
-        <div class="section-header">
-            <h1><i class="fa-solid fa-diagram-project"></i> IAW Mindmap</h1>
-            <p>Interactive mindmap — use fullscreen for the best experience.</p>
-        </div>
-
-        <div class="mindmap-wrapper">
-            <iframe
-                src="https://app.xmind.com/embed/G8twCy7T?sheet-id=94d8074374fa0870cef34ae258"
-                width="900px"
-                height="540px"
-                frameborder="0"
-                scrolling="no"
-                allow="fullscreen">
-            </iframe>
-        </div>
-
+            <div class="mindmap-container">
+                <div class="tree">
+                    <ul>
+                        <li>
+                            <a href="#" style="font-weight: bold; font-size: 18px; background-color: #e63946;">WEB SECURITY</a>
+                            <ul>
+                                <li>
+                                    <a href="#">L1: Intro</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Components (Front/Back/DB)</a></li>
+                                        <li><a href="#">Auth vs Authz</a></li>
+                                        <li><a href="#">CIA Triad</a></li>
+                                        <li><a href="#">OWASP Top 10 & Tools</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L2: Info Disclosure</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Error Messages</a></li>
+                                        <li><a href="#">Security Headers</a></li>
+                                        <li><a href="#">Directory Listing</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L3: Auth Vulns</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Weak Passwords/Hash</a></li>
+                                        <li><a href="#">MFA Bypass/SMS Intercept</a></li>
+                                        <li><a href="#">Insecure Recovery</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L4: Access Control</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">IDOR</a></li>
+                                        <li><a href="#">Privilege Escalation</a></li>
+                                        <li><a href="#">OAuth 2.0 Flaws</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L5: SQL Injection</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">UNION & Stacked</a></li>
+                                        <li><a href="#">Error & Time-based</a></li>
+                                        <li><a href="#">Fix: Prepared Statements</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li>
+                                    <a href="#">L6: OS Command</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Direct & Blind Inj</a></li>
+                                        <li><a href="#">System Shell Access</a></li>
+                                        <li><a href="#">Fix: Safe APIs</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L7: XSS</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Reflected (URL)</a></li>
+                                        <li><a href="#">Stored (Database)</a></li>
+                                        <li><a href="#">DOM-based</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L8: SSRF</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Internal Recon</a></li>
+                                        <li><a href="#">Trust Relationships</a></li>
+                                        <li><a href="#">Fix: IP Allowlist</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L9: Race Condition</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Concurrent DB Tx</a></li>
+                                        <li><a href="#">Session Race</a></li>
+                                        <li><a href="#">Fix: Locking & Sync</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">L10: Path Traversal</a>
+                                    <ul class="vertical">
+                                        <li><a href="#">Insecure Uploads</a></li>
+                                        <li><a href="#">Read ../../etc/passwd</a></li>
+                                        <li><a href="#">Fix: Path Sanitization</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Vu Baka Roblox. All rights reserved.</p>
+    <footer style="text-align: center; padding: 20px; color: #888;">
+        <p>&copy; 2024 Vu Baka. IAW Knowledge Base.</p>
     </footer>
 
 </body>
