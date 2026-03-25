@@ -3,134 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vu Baka Roblox | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>IAW Mindmap | Vu Baka Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #11111b 0%, #1e1e2e 100%);
+            color: #cdd6f4;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(24, 24, 37, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #89b4fa;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #a6adc8;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            color: #f5c2e7;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+            animation: slideUp 0.4s ease forwards;
+        }
+
+        .section-header h1 {
+            font-size: 2rem;
+            color: #89b4fa;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #a6adc8;
+            font-size: 1rem;
+        }
+
+        /* --- MINDMAP EMBED --- */
+        .mindmap-wrapper {
+            background-color: #313244;
+            border-radius: 16px;
+            border: 1px solid #45475a;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.3s ease;
+            animation: slideUp 0.5s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .mindmap-wrapper:hover {
+            box-shadow: 0 15px 50px rgba(137, 180, 250, 0.15);
+            border-color: #89b4fa;
+        }
+
+        .mindmap-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 540px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #6c7086;
+            font-size: 0.9rem;
+            border-top: 1px solid #313244;
+            margin-top: 60px;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+                gap: 12px;
+            }
+
+            .section-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .mindmap-wrapper iframe {
+                height: 400px;
+            }
+
+            .container {
+                margin: 20px auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">Vu Baka Portfolio</div>
-        <ul class="nav-links">
-            <li><button class="tab-btn active" onclick="openTab(event, 'about')">About Me</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'games')">My Games</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'tutorials')">Studio Tutorials</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'contact')">Contact</button></li>
-        </ul>
+        <a href="https://vub4k4.github.io/" class="logo">Vu Baka Portfolio</a>
+        <a href="https://vub4k4.github.io/" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Portfolio
+        </a>
     </nav>
 
     <main class="container">
 
-        <section id="about" class="tab-content active">
-            <div class="profile-header">
-                <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-DE535B694A2BDEFAB2E7557DC2E28A09-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Roblox Avatar" class="avatar">
-                <h1>Hi, I'm Vu</h1>
-                <p class="subtitle">Roblox Developer & Content Creator</p>
-            </div>
+        <div class="section-header">
+            <h1><i class="fa-solid fa-diagram-project"></i> IAW Mindmap</h1>
+            <p>Interactive mindmap — use fullscreen for the best experience.</p>
+        </div>
 
-            <div class="channel-showcase">
-                <div class="channel-card">
-                    <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank">
-                        <i class="fa-brands fa-youtube channel-icon"></i>
-                        <h3>Vũ Baka Roblox</h3>
-                        <p>Roblox Studio Tutorials & Scripting</p>
-                    </a>
-                </div>
-                <div class="channel-card">
-                    <a href="https://www.youtube.com/@vuroloc" target="_blank">
-                        <i class="fa-brands fa-youtube channel-icon"></i>
-                        <h3>Vũ Rô Lốc</h3>
-                        <p>Roblox Gaming & Entertainment</p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="bio-text">
-                <h2>Summary</h2>
-                <p>Welcome to my portfolio! I create high-quality Roblox Studio tutorials to help aspiring developers learn scripting and building. When I'm not coding, I create gaming content for the Roblox community.</p>
-            </div>
-        </section>
-
-        <section id="games" class="tab-content">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-gamepad"></i> My Experiences</h2>
-                <p>Play my latest creations directly on Roblox.</p>
-            </div>
-            
-            <div class="playlist-grid">
-                <div class="playlist-card">
-                    <img src="https://tr.rbxcdn.com/180DAY-4cdf767e6f229703f7222c55a3ed31d4/352/352/Image/Png/noFilter" alt="Christmas Terror">
-                    <h4>Christmas Terror [HORROR]</h4> 
-                    <p>Something is lurking in the dark...</p>
-                    <a href="https://www.roblox.com/share?code=027babb28c80b74a9b7a75bbcb7d84bb&type=ExperienceDetails&stamp=1766376163949" target="_blank" class="btn-small">Play Now</a>
-                </div>
-
-                <div class="playlist-card">
-                    <img src="https://tr.rbxcdn.com/180DAY-e744ffa07a5ee6063ad1ea6dd930caa7/352/352/Image/Png/noFilter" alt="Touch Grass">
-                    <h4>Just chilling here, and touch grass maybe :D</h4>
-                    <p>Admire the nature hehehehee.</p>
-                    <a href="https://www.roblox.com/share?code=8ffbc07f2191c1418fe722a682b6a8c7&type=ExperienceDetails&stamp=1766376092429" target="_blank" class="btn-small">Play Now</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="tutorials" class="tab-content">
-            <div class="section-header">
-                <h2><i class="fa-solid fa-code"></i> Roblox Studio Tutorials</h2>
-                <p>Check out my latest guides on scripting and game development.</p>
-            </div>
-            
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/Vq1hCWCZun8?start=29" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-            <h3>Popular Playlists</h3>
-            <div class="playlist-grid">
-                <div class="playlist-card">
-                    <h4>Beginner Scripting</h4>
-                    <p>Start here if you are new to Luau.</p>
-                    <a href="https://www.youtube.com/playlist?list=PL24j5OZWDiY0sIUkpuLztNtS8D0f-yb-h" target="_blank" class="btn-small">Watch Series</a>
-                </div>
-                <div class="playlist-card">
-                    <h4>Map Building</h4>
-                    <p>Learn how to build realistic maps.</p>
-                    <a href="#" class="btn-small disabled">Coming Soon</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="tab-content">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>Connect with me on my socials or drop a message.</p>
-            </div>
-            <div class="contact-list">
-                <a href="https://www.roblox.com/users/688805779/profile" target="_blank" class="contact-item">
-                    <i class="fa-solid fa-gamepad"></i>
-                    <span>Roblox Profile</span>
-                </a>
-                <a href="https://www.youtube.com/@VuBakaRoblox" target="_blank" class="contact-item">
-                    <i class="fa-brands fa-youtube"></i>
-                    <span>YouTube (Vu Baka)</span>
-                </a>
-                <a href="https://x.com/VietnameseBaka" target="_blank" class="contact-item">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <span>X (Twitter)</span>
-                </a>
-                <div class="contact-item static">
-                    <i class="fa-brands fa-discord"></i>
-                    <span>Discord: <strong>toukoire1</strong></span>
-                </div>
-                <a href="mailto:toukoire1@gmail.com" class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>Email Me</span>
-                </a>
-                <a href="https://www.facebook.com/toukoire1" target="_blank" class="contact-item">
-                    <i class="fa-brands fa-facebook"></i>
-                    <span>Facebook</span>
-                </a>
-            </div>
-        </section>
+        <div class="mindmap-wrapper">
+            <iframe
+                src="https://app.xmind.com/embed/G8twCy7T?sheet-id=94d8074374fa0870cef34ae258"
+                width="900px"
+                height="540px"
+                frameborder="0"
+                scrolling="no"
+                allow="fullscreen">
+            </iframe>
+        </div>
 
     </main>
 
@@ -138,6 +183,5 @@
         <p>&copy; 2024 Vu Baka Roblox. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
